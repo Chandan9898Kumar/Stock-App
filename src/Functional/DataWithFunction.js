@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const API_URL = "https://jsonmock.hackerrank.com/api/stocks";
 const FunctionData = () => {
     const [input, setInput] = useState('')
-    const [storedata, setStoreData] = useState([])
+    const [storedata, setStoreData] = useState()
 
     const Onchangefunction = (e) => {
         setInput(e.target.value)
@@ -38,8 +38,7 @@ const FunctionData = () => {
 
             >Click Here</button>
             <br />
-
-            {
+            {/* {
                 storedata.length === 0 ?
                     'No Result Found' :
                     <>
@@ -54,7 +53,21 @@ const FunctionData = () => {
                         </ul>
                     </>
 
-            }
+            } */}
+            {storedata &&
+                (storedata.length > 0 ? (
+                    <ul>
+                        <li>
+                            Date : {storedata[0].date}<br />
+                            High : {storedata[0].high}<br />
+                            Low : {storedata[0].low}<br />
+                            Open : {storedata[0].open}<br />
+                            Close : {storedata[0].close}<br />
+                        </li>
+                    </ul>
+                ) : (
+                    <div>No Results Found </div>
+                ))}
 
         </>
     )
